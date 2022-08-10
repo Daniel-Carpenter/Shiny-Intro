@@ -14,9 +14,9 @@ ui <- fluidPage(
   selectInput(
     inputId = "first_input",
     label = "Select a Number",
-    choices = c(1,2,3,4,5,6,7,8,9,10)
-    #multiple = TRUE,
-    #selected = 7
+    choices = c(1,2,3,4,5,6,7,8,9,10),
+    multiple = TRUE,
+    selected = 7
   )
 )
 

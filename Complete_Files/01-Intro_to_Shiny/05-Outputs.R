@@ -26,7 +26,7 @@ ui <- fluidPage(
     min = 1, max = 20, step = 1
   ),
   
-  verbatimTextOutput("power")
+  verbatimTextOutput("power") # note show variable with quotes in UI
 )
 
 server <- function(input, output) {
@@ -36,6 +36,8 @@ server <- function(input, output) {
   })
   
   make_power <- function(x, y) { as.numeric(x) ** as.numeric(y) }
+  
+  # Now create the variable and send to UI
   output$power <- renderText({ make_power( input$first_input, input$second_input )})
   
   #output$power <- renderText({ as.numeric(input$first_input) ** input$second_input })
