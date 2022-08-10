@@ -7,7 +7,7 @@ library(tidyverse)
 
 
 # Initialize Data ----
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+dat <- readRDS(file = "../02-Build_the_Frame//app-data//subregion_agg.rds")
 
 
 # UI ----
@@ -66,6 +66,7 @@ ui <- dashboardPage(
 
 server <- function(input, output) {
   
+  # CAn do this to see debug what the inputs are
   observe( print(input$metric) )
   observe( print(input$country) )
   observe( print(input$date_range_country[1]) )

@@ -7,7 +7,7 @@ library(tidyverse)
 
 
 # Initialize Data ----
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+dat <- readRDS(file = "../02-Build_the_Frame//app-data//subregion_agg.rds")
 
 clean_dat <- dat %>%
   select( !subregion1_name ) %>%

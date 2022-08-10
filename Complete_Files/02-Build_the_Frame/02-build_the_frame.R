@@ -5,9 +5,9 @@ library(shinyjs)
 library(tidyverse)
 
 
-
+getwd()
 # Initialize Data ----
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+dat <- readRDS(file = "../02-Build_the_Frame//app-data//subregion_agg.rds")
 
 
 
@@ -30,10 +30,13 @@ ui <- dashboardPage(
   #### Body ----
   dashboardBody(
     tabsetPanel(
-      type = "tabs",
+      type = "pills", # "tabs"
       id = "tab_selected",
       tabPanel(
         title = "Country View"
+      ),
+      tabPanel(
+        title = "Could add another tab here"
       )
     )
   )

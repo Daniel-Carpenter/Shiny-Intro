@@ -4,10 +4,12 @@ library(shinydashboard)
 library(shinyjs)
 library(tidyverse)
 
+# Do all the data prep first, then load ui and server
+# Plots go in the server section
 
 
 # Initialize Data ----
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+dat <- readRDS(file = "../02-Build_the_Frame//app-data//subregion_agg.rds")
 
 clean_dat <- dat %>%
   select( !subregion1_name ) %>%
@@ -41,7 +43,7 @@ ui <- dashboardPage(
       id = "tab_selected",
       tabPanel(
         title = "Country View",
-        plotOutput("plot_data_country")
+        plotOutput("plot_data_country") # From server `plot_data_country`
       )
     )
   )
@@ -49,6 +51,8 @@ ui <- dashboardPage(
 
 server <- function(input, output) {
   
+  
+  # Render plot first `plot_data_country`
   output$plot_data_country <- renderPlot({
     ggplot( data = clean_dat, aes(y = new_confirmed, x = date, color = "Canada") ) +
       geom_line(size = 1.5) +

@@ -5,9 +5,11 @@ library(shinyjs)
 library(tidyverse)
 
 
+# This just shows how to clean up the input names (remove "_", etc.)
+
 
 # Initialize Data ----
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+dat <- readRDS(file = "../02-Build_the_Frame//app-data//subregion_agg.rds")
 
 metric_choices <- colnames(dat)[4:ncol(dat)]
 metric_names <- gsub("_", " ", metric_choices)

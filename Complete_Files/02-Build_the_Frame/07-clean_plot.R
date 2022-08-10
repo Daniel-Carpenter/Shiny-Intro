@@ -5,10 +5,13 @@ library(shinyjs)
 library(tidyverse)
 library(scales)
 
+library(fresh) # For colors
+
+
 
 
 # Initialize Data ----
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+dat <- readRDS(file = "../02-Build_the_Frame//app-data//subregion_agg.rds")
 
 metric_choices <- colnames(dat)[4:ncol(dat)]
 metric_names <- gsub("_", " ", metric_choices)
@@ -17,11 +20,41 @@ metric_list <- as.list(metric_choices)
 names(metric_list) <- metric_names
 
 
+# Theme ----
+    # source https://stackoverflow.com/questions/45016826/change-color-in-shinydashboard
+
+# OPA Style Guide Brand Idea
+opaBrand <- create_theme(
+  
+  # Use here: dashboardBody(use_theme(opaBrand))
+  
+  # Top Ribbon 
+  adminlte_color(
+    light_blue = "#2D343B",
+  ),
+  
+  # Left Side bar
+  adminlte_sidebar(
+    width = "300px",
+    dark_bg = "#3F4953"
+    # dark_hover_bg = "#3F4953",
+    # dark_color = "#3F4953"
+  ),
+  
+  # Page Background
+  adminlte_global(
+    content_bg = "#FAFAFA", # Page Background
+    # box_bg = "#F2A896", 
+    # info_box_bg = "#F2A896"
+  )
+)
+
+
 # UI ----
 ui <- dashboardPage(
   
   #theme = bs_theme(version = 4, bootswatch = "minty"),
-  skin = "red",
+  # skin = "blue",
   
   #### Header ----
   dashboardHeader(
@@ -30,7 +63,6 @@ ui <- dashboardPage(
   ),
   #### Sidebar ----
   dashboardSidebar(
-    
     width = 350,
     br(),
     h4("Select Your Inputs Here", style = "padding-left:20px"),
@@ -63,6 +95,7 @@ ui <- dashboardPage(
   ),
   #### Body ----
   dashboardBody(
+    use_theme(opaBrand),
     tabsetPanel(
       type = "tabs",
       id = "tab_selected",

@@ -1,8 +1,13 @@
 library(tidyverse)
 library(ggplot2)
 
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+# Steps: 
+  # start with data manip then mockup all of the plots
 
+dat <- readRDS(file = "../02-Build_the_Frame//app-data//subregion_agg.rds")
+
+
+# Recomend to hard code the inpputs first thene exchange later
 clean_dat <- dat %>%
   select( !subregion1_name ) %>%
   filter( country_name == "Canada" & date >= "2020-01-01" & date <= "2020-12-31") %>%
