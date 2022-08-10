@@ -43,6 +43,7 @@ server <- function(input, output) {
   #output$power <- renderText({ as.numeric(input$first_input) ** input$second_input })
   
   
+  # Create a plot
   output$plot <- renderPlot({
     ggplot( data = data.frame( x = 1:10, y = (1:10)**(input$second_input) ), aes(x,y) ) +
       geom_point() +
