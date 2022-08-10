@@ -5,10 +5,10 @@ library(shinyjs)
 library(tidyverse)
 library(scales)
 
-
+# Change inputs based on tab you are on
 
 # Initialize Data ----
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+dat <- readRDS(file = "../02-Build_the_Frame//app-data//subregion_agg.rds")
 
 metric_choices <- colnames(dat)[4:ncol(dat)]
 metric_names <- gsub("_", " ", metric_choices)
