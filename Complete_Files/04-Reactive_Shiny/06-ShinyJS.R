@@ -4,6 +4,8 @@ library(quantmod)
 library(shinyjs)
 
 
+# Show conditional input
+
 # Source helpers ----
 #source("helpers.R")
 
@@ -64,7 +66,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   observeEvent(input$toggle_theme,{
-    toggle("theme", anim = T, animType = "slide")
+    toggle("theme", anim = T, animType = "slide") # COnditional selection
   })
   
   

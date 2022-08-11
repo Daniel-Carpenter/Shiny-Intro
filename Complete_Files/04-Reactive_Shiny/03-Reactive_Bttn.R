@@ -66,8 +66,11 @@ server <- function(input, output) {
     
     input$go_bttn
 
+    
+    # The only thing that changes is input$log automatically
+    # The rest need the button to go
     chartSeries( data , theme = chartTheme("white"),
-              type = "line", log.scale = input$log, TA = NULL)
+              type = "line", log.scale = input$log, TA = NULL) 
     
   })
 

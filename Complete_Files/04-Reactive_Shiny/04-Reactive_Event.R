@@ -2,6 +2,8 @@
 library(shiny)
 library(quantmod)
 
+# EVENTrEACTIVE MAKES IT TO where nothing loads until you explicitely require action
+
 # Source helpers ----
 #source("helpers.R")
 

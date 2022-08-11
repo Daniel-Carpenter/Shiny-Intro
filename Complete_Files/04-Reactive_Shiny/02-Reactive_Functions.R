@@ -2,6 +2,8 @@
 library(shiny)
 library(quantmod)
 
+# Reactive makes it faster, don't have to re run every time
+
 # Source helpers ----
 #source("helpers.R")
 
@@ -34,14 +36,17 @@ ui <- fluidPage(
 # Server logic
 server <- function(input, output) {
 
+  # Using a reactive function will make it so that you do not have to re run this 
+  # Part on each new selection
   dataInput <- reactive({
-     Sys.sleep(5)
+     Sys.sleep(5) # Does nothing for 5 seconds
      getSymbols(input$symb, src = "yahoo",
                 from = input$dates[1],
                 to = input$dates[2],
                 auto.assign = FALSE)
    })
   
+  # Do not do this
   # dataInput <- function(){
   #    #Sys.sleep(5)
   #    getSymbols(input$symb, src = "yahoo",

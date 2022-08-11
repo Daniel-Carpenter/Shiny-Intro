@@ -8,9 +8,9 @@ library(tidyquant)
 library(forecast)
 library(plotly)
 
-source("app-data/functions.R")
+source("..//07-Plotly//app-data/functions.R")
 # Initialize Data ----
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+dat <- readRDS(file = "..//07-Plotly//app-data/subregion_agg.rds")
 
 metric_choices <- colnames(dat)[4:ncol(dat)]
 metric_names <- gsub("_", " ", metric_choices)
@@ -115,7 +115,7 @@ server <- function(input, output) {
     y <- list( title = "Metric",titlefont = f)
     
     plt <- plot_ly (data = dat_ma, x=~date, color=~country_name, text = ~country_name)
-    plt <- plt %>% add_trace(y=~metric, type='scatter', mode='lines+markers', #fill = 'tonexty',
+    plt <- plt %>% add_trace(y=~metric, type='scatter', mode='lines', #fill = 'tonexty',
                              hovertemplate = paste(
                                paste0('<extra>Actuals</extra>Country Name: %{text}\n',name_fix(input$metric),': %{y}\nDate: %{x} ')
                              ))

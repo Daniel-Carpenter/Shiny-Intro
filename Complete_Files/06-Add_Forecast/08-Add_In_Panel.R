@@ -7,9 +7,9 @@ library(scales)
 library(tidyquant)
 library(forecast)
 
-source("app-data/functions.R")
+source("..//06-Add_Forecast//app-data/functions.R")
 # Initialize Data ----
-dat <- readRDS(file = "app-data/subregion_agg.rds")
+dat <- readRDS(file = "..//06-Add_Forecast//app-data/subregion_agg.rds")
 
 metric_choices <- colnames(dat)[4:ncol(dat)]
 metric_names <- gsub("_", " ", metric_choices)
@@ -333,7 +333,7 @@ server <- function(input, output) {
   # 04.K remove_forecast_bttn ----
   output$remove_forecast_bttn <- renderUI({
     actionButton(inputId = "remove_forecast_bttn",
-                 style = "color: white;", 
+                 style = "color: white;",  
                  label = "Remove",
                  class = "btn btn-lg btn-danger"
     )
